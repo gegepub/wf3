@@ -9,6 +9,7 @@
 // Initialisation des variables
 // Mes pokemons
 $pokemons = array();
+
 // Pikachu
 $pikachu = [
   'pv' => isset($_GET['pv_pokemon1']) ? $_GET['pv_pokemon1'] : 25, // 25 Points de vie par défaut
@@ -16,6 +17,7 @@ $pikachu = [
   'defense' => isset($_GET['defense_pokemon1']) ? $_GET['defense_pokemon1'] : 10
 ];
 $pokemons['Pikachu'] = $pikachu;
+
 // Bulbizarre
 $bulbizarre = [
   'pv' => isset($_GET['pv_pokemon2']) ? $_GET['pv_pokemon2'] : 30,
@@ -23,9 +25,12 @@ $bulbizarre = [
   'defense' => isset($_GET['defense_pokemon2']) ? $_GET['defense_pokemon2'] : 20
 ];
 $pokemons['Bulbizarre'] = $bulbizarre;
+
 // tableau de validation
 $form_error = [];
+
 // Validation du formulaire
+// $input est égal au champ name de l'input ou du select
 foreach($_GET as $input => $value) {
   if ($input === 'pokemon1' || $input === 'pokemon2') {
     if (!isset($pokemons[$value])) {
@@ -33,7 +38,7 @@ foreach($_GET as $input => $value) {
       $form_error[$input] = 1;
     }
   } elseif (empty($value) || !ctype_digit($value) || $value <= 0) {
-    echo '<p style="">Le champ ' . $input . ' doit un entier strictement supérieur à 0</p>';
+    echo '<p style="">Le champ ' . $input . ' doit être un entier strictement supérieur à 0</p>';
     $form_error[$input] = 1;
   }
 }
