@@ -1,88 +1,49 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Exemple</title>
+  <!-- Insérer le css ici -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 
   <?php
-  	$nom = 'Dupont';
-  	$prenom = 'Jean';
-  	
-    echo "Bonjour ". $prenom." ".$nom;
-
-    echo "<br/>";
-    $age = 33;
-
-    echo "J'ai $age ans";
-    //echo 'J\'ai $age ans';
-    // \ caractère d'échappement, le \n est un saut de ligne
-
-    echo "<br>";
-
-    if ($age > 18 && $prenom == "Jean"){
-    	echo "Majeur";
-    } elseif($age >= 15) {
-    	echo "Ado";
-    } else {
-    	echo "Enfant";
-    }
-
-    $age2 = 33;
-    echo "<br>";
-    echo $age <=> $age2;  
-    echo "<br>";
-    echo 1<=>2;
-    echo "<br>";
-    echo 2<=>1;
-    echo "<br>";
-    // Déclaration de variables
-    $a = null;
-
-    $c = 5;
-    $b;
-    $d;
-
-    // affiche la première valeur non nulle
-    echo $a ?? $b ?? $c ?? $d;
-
-    echo "<br>";
-    // l'arithmétique :
-    $a = 5;
-    $b = $a + 5;
-    echo "b vaut $b et a vaut $a";
-
-    echo "<br>";
-    $b = $a +=5; //$a = $a + 5
-    echo "b vaut $b et a vaut $a";
-   
-	echo "<br>";   
-    $a++;	// $a = $a + 1
-    echo "a vaut $a <br>";
-
-    ++$a;	// $a = $a +1
-    echo "a vaut $a <br>";
-
-    // différence
-    echo "avant a vaut " .  ++$a; // on incrémente d'abord a et on envoie la valeur de a après  
-    echo " après a vaut " .  $a;
-    echo "<br>";
-    echo "avant a vaut " .  $a++; // on envoie la valeur de a et on incrémente a après
-    echo " après a vaut " .  $a;
-    
-    echo "<pre>";		// balise <pre> pour isoler le code
-    print_r ($a);		// contenu de la valeur
-    echo "</pre>";
-    echo "<pre>";
-    var_dump ($a);		// donne le type et les propriétés d'un objet
-    echo "ce code n'est pas interprété\n\ndu tout";
-    echo "</pre>";
-
-    $array = ["couleur" => "rouge", "taille" => 1.70];
-    echo "<pre>";
-    var_dump($array);
-    die ("fini");
+     require("pokemon.php");
   ?>
+
+  <form>
+    <fieldset>
+      <legend>Pokemon 1 :
+        <select id="pokemon1" name="pokemon1" <?php echo isset($form_error['pokemon1']) ? 'class="error"' : ''; ?>>
+          <?php
+            foreach($pokemons as $pokemon => $stats) {
+              echo '<option value="' . $pokemon . '">' . $pokemon . '</option>';
+            }
+          ?>
+        </select>
+      </legend>
+      <div>Points de vie : <input type="test" name="pv_pokemon1" value="<?php echo $pikachu['pv']; ?>" <?php echo isset($form_error['pv_pokemon1']) ? 'class="error"' : ''; ?> /></div>
+      <div>Points de défense : <input type="test" name="defense_pokemon1" value="<?php echo $pikachu['defense']; ?>" <?php echo isset($form_error['defense_pokemon1']) ? 'class="error"' : ''; ?> /></div>
+      <div>Points d'attaque : <input type="test" name="attaque_pokemon1" value="<?php echo $pikachu['attaque']; ?>" <?php echo isset($form_error['attaque_pokemon1']) ? 'class="error"' : ''; ?> /></div>
+    </fieldset>
+    <fieldset>
+      <legend>Pokemon 2 :
+        <select id="pokemon2" name="pokemon2" <?php echo isset($form_error['pokemon2']) ? 'class="error"' : ''; ?>>
+          <?php
+            foreach($pokemons as $pokemon => $stats) {
+              echo '<option value="' . $pokemon . '" ' . ($pokemon == 'Bulbizarre' ? 'selected' : '') . '>' . $pokemon . '</option>';
+            }
+          ?>
+        </select>
+      </legend>
+      <div>Points de vie : <input type="test" name="pv_pokemon2" value="<?php echo $bulbizarre['pv']; ?>" <?php echo isset($form_error['pv_pokemon2']) ? 'class="error"' : ''; ?> /></div>
+      <div>Points de défense : <input type="test" name="defense_pokemon2" value="<?php echo $bulbizarre['defense']; ?>" <?php echo isset($form_error['defense_pokemon2']) ? 'class="error"' : ''; ?> /></div>
+      <div>Points d'attaque : <input type="test" name="attaque_pokemon2" value="<?php echo $bulbizarre['attaque']; ?>" <?php echo isset($form_error['attaque_pokemon2']) ? 'class="error"' : ''; ?> /></div>
+    </fieldset>
+    <button type="submit">Combattez !</button>
+  </form>
 
 </body>
 </html>
+
