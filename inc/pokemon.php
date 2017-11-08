@@ -4,11 +4,13 @@
  * Nous allons travailler à la réalisation d'un pokedex
  */
 
-include "fonction.php";
+include "function.php";
 
 // Initialisation des variables
+
 // Mes pokemons
 $pokemons = array();
+
 // Les pokemons ont 50 points à répartir entre vie, défense et attaque
 // Pikachu
 $pikachu = [
@@ -24,6 +26,7 @@ $bulbizarre = [
   'defense' => 12
 ];
 $pokemons['Bulbizarre'] = $bulbizarre;
+
 // Salameche
 $salameche = [
   'pv' => 15,
@@ -31,6 +34,7 @@ $salameche = [
   'defense' => 15
 ];
 $pokemons['Salameche'] = $salameche;
+
 echo '
   <script type="text/javascript">
     var pokemons = [];
@@ -100,10 +104,6 @@ $pokemon2["defense"] = $_GET['defense_pokemon2'];
 $pokemon2["attaque"] = $_GET['attaque_pokemon2'];
 echo "<h2>$nom_pokemon1 affronte $nom_pokemon2</h2>";
 //echo "Date : " . date('d/m/Y : H:i:s');
-
-
-
-
 
 // Boucle de combat
 do {
